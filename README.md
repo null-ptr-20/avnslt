@@ -2,5 +2,5 @@
 
 ## Current state:
 
-> Thinking about the project
+> Thinking about the project,
 > What do we **need**
