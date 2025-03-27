@@ -1,6 +1,6 @@
 # AVNSLT
 
-> **Warn:** (Still in developement) This project is far from finished
+> <div style="color:yellow" **WARN:** </div> (Still in developement) This project is far from finished
 
 ## What is Avnslt
 
