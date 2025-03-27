@@ -35,16 +35,16 @@
 
 ### Starting stages
 
-- [] Create a REPL like interface
-- [] User is prompted to enter title, date and body
-- [] When user saves, it saves to a specified file format
-- [] When user open files, it all fields are editable
-- [] Last save flag in the file is marked (e.g --Ver 1.0)
+- [ ] Create a REPL like interface
+- [ ] User is prompted to enter title, date and body
+- [ ] When user saves, it saves to a specified file format
+- [ ] When user open files, it all fields are editable
+- [ ] Last save flag in the file is marked (e.g --Ver 1.0)
 
 ### Next steps
 
-- [] Create terminal alternate window, raw mode, undo, redo..
-- [] Data structure to explore: Piece Table
+- [ ] Create terminal alternate window, raw mode, undo, redo..
+- [ ] Data structure to explore: Piece Table
 
 ## Installation
 
