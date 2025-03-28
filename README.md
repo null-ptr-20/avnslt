@@ -50,12 +50,12 @@
 
 1. Clone the repository into your local machine:
 
-> `git clone https://github.com/null-ptr-20/avnslt.git`
+`git clone https://github.com/null-ptr-20/avnslt.git`
 
 2. Navigate into the rs_avnslt folder:
 
-> `cd ~/avnslt/rs_avnslt`
+`cd ~/avnslt/rs_avnslt`
 
 3. Cargo run:
 
-> `cargo run`
+`cargo run`
