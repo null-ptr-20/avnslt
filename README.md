@@ -1,6 +1,6 @@
 # AVNSLT
 
-> **WARN:**(Still in developement) This project is far from finished
+> **WARN:** (Still in developement) This project is far from finished
 
 ## What is Avnslt
 
@@ -35,9 +35,9 @@
 
 ### Starting stages
 
-- [ ] Create a REPL like interface
-- [ ] User is prompted to enter title, date and body
-- [ ] When user saves, it saves to a specified file format
+- [x] Create a REPL like interface
+- [x] User is prompted to enter title, date and body
+- [x] When user saves, it saves to a specified file format (.txt)
 - [ ] When user open files, it all fields are editable
 - [ ] Last save flag in the file is marked (e.g --Ver 1.0)
 
