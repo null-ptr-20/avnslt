@@ -1,6 +1,7 @@
 # AVNSLT
 
-> **WARN:** (Still in developement) This project is far from finished
+> [!WARNING]
+> (Still in developement) This project is far from finished
 
 ## What is Avnslt
 
@@ -47,6 +48,9 @@
 - [ ] Data structure to explore: Piece Table
 
 ## Installation
+
+> [!NOTE]
+> This is just cloning the github to your local machine.
 
 1. Clone the repository into your local machine:
 
