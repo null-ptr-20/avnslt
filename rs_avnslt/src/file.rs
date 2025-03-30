@@ -23,18 +23,20 @@ impl File {
         }
     }
     
+    //TODO: Add some checks for file type
+    
     pub fn save_file(&self) -> Result<()> {
         let file_name = OsString::from(prompt_scan("Please enter file name: ").trim());
         let file_path = fs::File::create(file_name).expect("Cannot create file!!");
-        writeln!(&file_path, "Title:\n{}", self.title)?;
-        writeln!(&file_path, "Date:\n{}", self.date)?;
-        writeln!(&file_path, "Body:\n{}", self.body)?;
+        writeln!(&file_path, "Title: {}", self.title)?;
+        writeln!(&file_path, "Date: {}", self.date)?;
+        writeln!(&file_path, "Body: {}", self.body)?;
         Ok(())
     }
 }
 
 impl Summary for File {
     fn summarize(&self) -> String {
-        format!("The text file is titled: {}\nWritten on date: {}", self.title, self.date)
+        format!("Summary:\nTitle: {}\nDate saved: {}", self.title, self.date)
     }
 }
