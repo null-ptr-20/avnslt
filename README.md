@@ -3,9 +3,7 @@
 > [!WARNING]
 > (Still in developement) This project is far from finished
 
-## What is Avnslt
-
-- A
+## What is Avnslt - A
 - Very
 - Nice
 - Simple
@@ -50,7 +48,7 @@
 ## Installation
 
 > [!NOTE]
-> This is just cloning the github to your local machine.
+> This is just cloning the github repo to your local machine.
 
 1. Clone the repository into your local machine:
 

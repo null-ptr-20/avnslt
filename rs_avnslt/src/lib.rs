@@ -1,3 +1,4 @@
+mod keywords;
 mod colors;
 mod ui;
 mod file;
@@ -6,6 +7,11 @@ use std::io::{self, Write};
 
 use file::Summary;
 
+/*
+* Prompt user to create a document
+* Fill in the title, date, body
+* Show the preview before saving
+*/
 pub fn prompt_create_file() -> file::File {
     println!("Please input the fields to start a file: ");
 
@@ -20,12 +26,21 @@ pub fn prompt_create_file() -> file::File {
     new_text_file
 }
 
+/*
+* Scan the user input that is entered into the terminal
+* remove eol char with trim -> converts into &str
+*/
 pub fn scan_input(user_input: &mut String) -> &str {
     io::stdin().read_line(user_input).expect("no input");
 
     user_input.trim()
 }
 
+/*
+* Prompt user with an output for user to read
+* Scan user input in terminal 
+* Convert scanned user input into a String
+*/
 pub fn prompt_scan(output: &str) -> String {
     println!("{}", output);
 
