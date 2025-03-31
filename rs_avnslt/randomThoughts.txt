@@ -1,2 +1,0 @@
-when in terminal, to go to new line, cannot press enter as it will register as a command.
-    -> For this, have to put terminal in Raw mode.
