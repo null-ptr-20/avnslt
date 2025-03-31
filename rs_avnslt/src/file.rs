@@ -1,6 +1,7 @@
 use std::fs;
 use std::io::{Write, Result};
 use std::ffi::OsString;
+use std::path::PathBuf;
 
 use crate::prompt_scan;
 
@@ -8,7 +9,7 @@ use crate::prompt_scan;
 * Specify a file to the user wants to create as a struct
 * title: Title of document
 * date: Date of document creation
-* body: Main body of the documnet (how to incorporate enter key?)
+* body: Main body of the document (how to incorporate enter key?)
 */
 pub struct File {
    pub title: String,
@@ -28,7 +29,9 @@ pub trait Summary {
 * Implementation of the File struct
 * build: Create the struct instance
 * save_file: Save the document the user creates in the terminal into an actual file
-* TODO: [save_file] Add some logic to ensure file extension (.txt for now) 
+* PathBuf is used as a mutable path 
+* Checks performed: If no extention -> auto saves as a .txt file
+* TODO: [save_file] Find how to enable enter button for body portion so as to start new line.
 */
 impl File {
     pub fn build(title: String, date: String, body: String) -> Self {
@@ -41,10 +44,17 @@ impl File {
     
     pub fn save_file(&self) -> Result<()> {
         let file_name = OsString::from(prompt_scan("Please enter file name: ").trim());
-        let file_path = fs::File::create(file_name).expect("Cannot create file!!");
-        writeln!(&file_path, "Title: {}", self.title)?;
-        writeln!(&file_path, "Date: {}", self.date)?;
-        writeln!(&file_path, "Body: {}", self.body)?;
+        let mut file_path = PathBuf::from(&file_name);
+
+        if file_path.extension().is_none() {
+            eprintln!("There is no file extention..\nSaving as a txt file");
+            file_path.set_extension("txt");
+        }
+
+        let file = fs::File::create(file_path).expect("Cannot create file!!");
+        writeln!(&file, "Title:\n{}", self.title)?;
+        writeln!(&file, "Date:\n{}", self.date)?;
+        writeln!(&file, "Body:\n{}", self.body)?;
         Ok(())
     }
 }
