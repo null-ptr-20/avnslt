@@ -1,4 +1,4 @@
-# ==AVNSLT==
+# AVNSLT
 
 > [!WARNING]
 > (Still in developement) This project is far from finished
