@@ -1,2 +1,6 @@
+# remove IDE files
 .idea
+.vscode
+
+# remove text files
 *.txt

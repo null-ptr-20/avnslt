@@ -1,16 +1,17 @@
-# AVNSLT
+# ==AVNSLT==
 
 > [!WARNING]
 > (Still in developement) This project is far from finished
 
-## What is Avnslt - A
+## What is Avnslt ?
+
 - Very
 - Nice
 - Simple
 - Little
 - Text-Editor
 
-## Why Rust?
+## Why Rust ?
 
 - For speed and safety
 - Because I'm learning it
