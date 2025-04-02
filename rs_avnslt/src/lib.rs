@@ -4,7 +4,6 @@ mod ui;
 mod file;
 
 use std::io::{self, Write};
-
 use file::Summary;
 
 /*
@@ -17,13 +16,31 @@ pub fn prompt_create_file() -> file::File {
 
     let title = prompt_scan("Title: ");
     let date = prompt_scan("Date: ");
-    let body = prompt_scan("Body: ");
+    
+    let body = loop_body_prompt();
 
     let new_text_file: file::File = file::File::build(title, date, body);
     
     println!("{}", new_text_file.summarize());
 
     new_text_file
+}
+
+pub fn loop_body_prompt() -> Vec<String> {
+    let mut body: Vec<String> = Vec::new();
+    
+    
+    loop {
+        let line: String = prompt_scan("B_ln: ").trim().to_string();
+
+        if line == ":s" {
+            break;
+        }
+
+        body.push(line);
+    }
+
+    body 
 }
 
 /*

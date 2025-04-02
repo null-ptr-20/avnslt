@@ -3,5 +3,5 @@
 * To segment portions in the terminal program (?)
 */
 //pub const LINES: &str = "=========================================";
-//pub const TWOTAB: &str = "        ";
-pub const TAG: &str = "AVNSLT >>";
+pub const TWOTAB: &str = "        ";
+pub const TAG: &str = "->";

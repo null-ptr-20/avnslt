@@ -3,6 +3,7 @@ use std::io::{Write, Result};
 use std::ffi::OsString;
 use std::path::PathBuf;
 
+use crate::ui;
 use crate::prompt_scan;
 
 /*
@@ -14,7 +15,7 @@ use crate::prompt_scan;
 pub struct File {
    pub title: String,
    pub date: String,
-   pub body: String,
+   pub body: Vec<String>,
 }
 
 /*
@@ -34,7 +35,7 @@ pub trait Summary {
 * TODO: [save_file] Find how to enable enter button for body portion so as to start new line.
 */
 impl File {
-    pub fn build(title: String, date: String, body: String) -> Self {
+    pub fn build(title: String, date: String, body: Vec<String>) -> Self {
         Self {
             title,
             date,
@@ -52,9 +53,19 @@ impl File {
         }
 
         let file = fs::File::create(file_path).expect("Cannot create file!!");
-        writeln!(&file, "Title:\n{}", self.title)?;
-        writeln!(&file, "Date:\n{}", self.date)?;
-        writeln!(&file, "Body:\n{}", self.body)?;
+        let file_body: &Vec<String> = &self.body;
+
+        writeln!(&file, "Title: {}", self.title)?;
+        writeln!(&file, "Date: {}", self.date)?;
+        writeln!(&file, "Body:")?;
+        for (i, line) in file_body.iter().enumerate() {
+            if i < file_body.len() - 1 {
+                writeln!(&file, "{}{}", ui::TWOTAB, line)?;
+            } else {
+                writeln!(&file, "-- EO(first)")?;
+            }
+        }
+
         Ok(())
     }
 }
