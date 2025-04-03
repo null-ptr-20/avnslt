@@ -26,7 +26,7 @@ pub fn prompt_create_file() -> file::File {
     new_text_file
 }
 
-pub fn loop_body_prompt() -> Vec<String> {
+fn loop_body_prompt() -> Vec<String> {
     let mut body: Vec<String> = Vec::new();
     
     
@@ -71,3 +71,10 @@ pub fn prompt_scan(output: &str) -> String {
 
     user_input.to_string()
 }
+
+pub fn edit_file(file_name: OsString) {}
+
+
+
+
+
