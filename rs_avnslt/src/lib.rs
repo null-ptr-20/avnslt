@@ -1,10 +1,11 @@
-mod keywords;
-mod colors;
-mod ui;
+pub mod constants;
 mod file;
 
 use std::io::{self, Write};
 use file::Summary;
+use std::ffi::OsString;
+use crate::constants::ui;
+use crate::constants::colors;
 
 /*
 * Prompt user to create a document
@@ -72,9 +73,6 @@ pub fn prompt_scan(output: &str) -> String {
     user_input.to_string()
 }
 
-pub fn edit_file(file_name: OsString) {}
-
-
-
-
-
+pub fn edit_file(file_name: OsString) {
+    todo!();
+}

@@ -38,8 +38,9 @@
 - [x] Create a REPL like interface
 - [x] User is prompted to enter title, date and body
 - [x] When user saves, it saves to a specified file format (.txt)
+- [x] Last save flag in the file is marked (e.g --Ver 1.0) [a flag of --EO(1)]
 - [ ] When user open files, it all fields are editable
-- [ ] Last save flag in the file is marked (e.g --Ver 1.0)
+- [ ] Edit saved flag to iterate based on how many times its saved (e.g --EO(1) first save, --EO(2) second save)
 
 ### Next steps
 

@@ -62,7 +62,7 @@ impl File {
             if i < file_body.len() - 1 {
                 writeln!(&file, "{}{}", ui::TWOTAB, line)?;
             } else {
-                writeln!(&file, "-- EO(first)")?;
+                writeln!(&file, "-- EO(1)")?;
             }
         }
 
