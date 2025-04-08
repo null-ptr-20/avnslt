@@ -6,16 +6,20 @@ use std::path::PathBuf;
 use crate::ui;
 use crate::prompt_scan;
 
+
+
 /*
 * Specify a file to the user wants to create as a struct
 * title: Title of document
 * date: Date of document creation
 * body: Main body of the document (how to incorporate enter key?)
+* TODO: add in access field for the edit file module.
 */
 pub struct File {
    pub title: String,
    pub date: String,
    pub body: Vec<String>,
+// pub access: bool, //RO RW maybe
 }
 
 /*
@@ -32,7 +36,7 @@ pub trait Summary {
 * save_file: Save the document the user creates in the terminal into an actual file
 * PathBuf is used as a mutable path 
 * Checks performed: If no extention -> auto saves as a .txt file
-* TODO: [save_file] Find how to enable enter button for body portion so as to start new line.
+* Vector is used to save multi line body sections
 */
 impl File {
     pub fn build(title: String, date: String, body: Vec<String>) -> Self {
@@ -43,6 +47,7 @@ impl File {
         }
     }
     
+    // TODO: save value increases every subsequent save EO(i)
     pub fn save_file(&self) -> Result<()> {
         let file_name = OsString::from(prompt_scan("Please enter file name: ").trim());
         let mut file_path = PathBuf::from(&file_name);
@@ -58,16 +63,24 @@ impl File {
         writeln!(&file, "Title: {}", self.title)?;
         writeln!(&file, "Date: {}", self.date)?;
         writeln!(&file, "Body:")?;
-        for (i, line) in file_body.iter().enumerate() {
-            if i < file_body.len() - 1 {
+        for line in file_body.iter() {
                 writeln!(&file, "{}{}", ui::TWOTAB, line)?;
-            } else {
-                writeln!(&file, "-- EO(1)")?;
-            }
         }
+        writeln!(&file, "-- EO(Original)")?;
+        //writeln!(&file, "-- EO({})", smth)?;
 
         Ok(())
     }
+
+    pub fn edit_file(&self, path: OsString) -> Result<()> {
+        let mut file_avail = fs::File::open(path)?;
+        let mut file_contents: String = String::new();
+
+        file_avail.read_to_string(&mut file_contents)?;
+        Ok(())
+
+    }
+
 }
 
 // Trait implementation

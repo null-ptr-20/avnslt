@@ -1,4 +1,6 @@
-use avnslt::prompt_create_file;
+mod repl_edit;
+
+use repl_edit::repl_editor;
 
 
 /*
@@ -6,6 +8,5 @@ use avnslt::prompt_create_file;
 * ReplEdi::run(); in main
 */
 fn main() {
-    let file = prompt_create_file();
-    let _ = file.save_file();
+    repl_editor::run();
 }

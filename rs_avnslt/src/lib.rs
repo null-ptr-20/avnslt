@@ -8,11 +8,19 @@ use crate::constants::ui;
 use crate::constants::colors;
 
 /*
+* TODO: create a function to edit file
+* read, write, save, add flag
+*/
+pub fn edit_file(file_name: OsString) {
+    todo!();
+}
+
+/*
 * Prompt user to create a document
 * Fill in the title, date, body
 * Show the preview before saving
 */
-pub fn prompt_create_file() -> file::File {
+pub fn prompt_create_file() -> () {
     println!("Please input the fields to start a file: ");
 
     let title = prompt_scan("Title: ");
@@ -21,10 +29,10 @@ pub fn prompt_create_file() -> file::File {
     let body = loop_body_prompt();
 
     let new_text_file: file::File = file::File::build(title, date, body);
-    
+
     println!("{}", new_text_file.summarize());
 
-    new_text_file
+    let _save = new_text_file.save_file();
 }
 
 fn loop_body_prompt() -> Vec<String> {
@@ -68,11 +76,7 @@ pub fn prompt_scan(output: &str) -> String {
     let mut user_input = String::new();
     scan_input(&mut user_input);
 
-    println!("{}", user_input);
+    println!("Your Entry: {}", user_input);
 
     user_input.to_string()
-}
-
-pub fn edit_file(file_name: OsString) {
-    todo!();
 }
