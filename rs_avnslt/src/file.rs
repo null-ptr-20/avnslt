@@ -1,7 +1,7 @@
 use std::fs;
 use std::io::{Write, Result};
 use std::ffi::OsString;
-use std::path::PathBuf;
+use std::path::{PathBuf, Path};
 
 use crate::ui;
 use crate::prompt_scan;
@@ -15,11 +15,11 @@ use crate::prompt_scan;
 * body: Main body of the document (how to incorporate enter key?)
 * TODO: add in access field for the edit file module.
 */
-pub struct File {
+pub struct CFile {
    pub title: String,
    pub date: String,
    pub body: Vec<String>,
-// pub access: bool, //RO RW maybe
+   pub access: bool, //RO RW maybe
 }
 
 /*
@@ -38,12 +38,13 @@ pub trait Summary {
 * Checks performed: If no extention -> auto saves as a .txt file
 * Vector is used to save multi line body sections
 */
-impl File {
-    pub fn build(title: String, date: String, body: Vec<String>) -> Self {
+impl CFile {
+    pub fn build(title: String, date: String, body: Vec<String>, access: bool) -> Self {
         Self {
             title,
             date,
             body,
+            access,
         }
     }
     
@@ -72,20 +73,29 @@ impl File {
         Ok(())
     }
 
+    /*
+    // NOTE: read write save based on access flag
+    //       but is this already accomplished with save_file 
+    //       since create is used not create_new?
     pub fn edit_file(&self, path: OsString) -> Result<()> {
-        let mut file_avail = fs::File::open(path)?;
-        let mut file_contents: String = String::new();
+        let path_echeck: bool = Path::new(&path).exists();
 
-        file_avail.read_to_string(&mut file_contents)?;
+        if path_echeck {
+            let file_contents = fs::read_to_string(&path)?;
+            println!("{}", file_contents);
+        } else {
+            eprintln!("Error! @ -> The file path specified does not exist");
+        }
+
         Ok(())
-
     }
+    */
 
 }
 
 // Trait implementation
-impl Summary for File {
+impl Summary for CFile {
     fn summarize(&self) -> String {
-        format!("Summary:\nTitle: {}\nDate saved: {}", self.title, self.date)
+        format!("Summary:\nTitle: {}\nDate saved: {}, Access: {}", self.title, self.date, self.access)
     }
 }

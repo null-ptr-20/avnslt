@@ -2,18 +2,12 @@ pub mod constants;
 mod file;
 
 use std::io::{self, Write};
-use file::Summary;
 use std::ffi::OsString;
+use std::fs;
+
+use file::Summary;
 use crate::constants::ui;
 use crate::constants::colors;
-
-/*
-* TODO: create a function to edit file
-* read, write, save, add flag
-*/
-pub fn edit_file(file_name: OsString) {
-    todo!();
-}
 
 /*
 * Prompt user to create a document
@@ -25,14 +19,25 @@ pub fn prompt_create_file() -> () {
 
     let title = prompt_scan("Title: ");
     let date = prompt_scan("Date: ");
-    
     let body = loop_body_prompt();
+    let access = true;
 
-    let new_text_file: file::File = file::File::build(title, date, body);
+    let new_text_file: file::CFile = file::CFile::build(title, date, body, access);
 
     println!("{}", new_text_file.summarize());
 
     let _save = new_text_file.save_file();
+}
+
+/*
+* TODO: Open file and put respective fields into a struct
+*       add editing logic choices.
+*/
+pub fn prompt_open_file() {
+    let path: OsString = OsString::from(prompt_scan("Please enter the file you want to edit: ").trim());
+    let file_contents = fs::read_to_string(path).unwrap();
+
+    println!("{}", file_contents);
 }
 
 fn loop_body_prompt() -> Vec<String> {
